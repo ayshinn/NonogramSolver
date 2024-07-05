@@ -1,0 +1,64 @@
+Input
+Board size (int)
+two lists of lists of numbers ([[1, 3, 3], [10]], [[10], [4, 5]])
+
+DATA STRUCTURES
+ON ROWS SIDE
+(rows and numbers might just be merged into one) list of 2N lists of segments.
+
+Numbers: [[XRow, XRow, XRow], [YRow, YRow, YRow]] (or could do one long list, any above N index is just y row)
+
+Row: {
+  segments: Segment[]
+}
+
+Segment: {
+  number (length shown in game)
+  bool (completed or not)
+}
+
+ON BOARD SIDE
+Grid: [[Space, Space, Space], [Space, Space, Space], ...]
+
+Space: {
+  coordinate (maybe unneeded since part of Grid?)
+  x segment it's part of
+  y segment it's part of
+  status (emoji)
+}
+
+
+
+ALGORITHM
+
+Repeated loops over the board and inputs.
+
+- helper method to handle space plus numbers (8 spots, and x numbers of inputs there.)
+  - eventually also handle spots having various amounts of filled in spots.
+
+Do I use backtracking? idk
+
+board[3, 1]:
+⬜️⬜️⬜️⬜️⬜️
+⬜️⬜️⬜️⬜️⬜️
+⬜️⬜️⬜️⬜️⬜️
+⬜️⬛️⬜️⬜️⬜️
+⬜️⬜️⬜️⬜️⬜️
+
+Data Structures for test1
+board: 5x5 row of rows of Spaces(status, x_segment, y_segment)
+
+numbers: 1x10 list of lists of segments(number, completed). Lists columns, then rows.
+[
+  [Segment(2, False)],
+  [Segment(4, False)],
+  [Segment(5, False)],
+  [Segment(3, False), Segment(1, False)],
+  [Segment(2, False)],
+
+  [Segment(2, False)],
+  [Segment(3, False)],
+  [Segment(5, False)],
+  [Segment(3, False), Segment(1, False)],
+  [Segment(3, False)],
+]
