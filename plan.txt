@@ -68,7 +68,6 @@ Python TODOs
   - Row would be a list of Segments, and a bool for completed or not
 
 HTML/JS TODOs
-- Turn gray "confirmed no fill" squares into Red X's
 - Create data structures
 - Maybe add line CSS for every 5 lines in grid
 - Do solver algo

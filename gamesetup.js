@@ -64,12 +64,15 @@ function updateGrid() {
   for (let i = 0; i < puzzle.length; i++) {
     for (let j = 0; j < puzzle[i].length; j++) {
       const cell = nonogramTable.rows[i + 1].cells[j + 1];
+      cell.style.backgroundColor = 'white';
+      cell.classList.remove('filled', 'crossout');
+
       if (puzzle[i][j] === 0) {
         cell.style.backgroundColor = 'white';
       } else if (puzzle[i][j] === 1) {
         cell.style.backgroundColor = 'black';
       } else {
-        cell.style.backgroundColor = 'gray';
+        cell.classList.add('crossout');
       }
     }
   }
