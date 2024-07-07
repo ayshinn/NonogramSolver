@@ -40,7 +40,11 @@ function initializeGame() {
         cell.textContent = rowHints[i - 1].join(' ');
         cell.classList.add('number-cell');
       } else {
-        cell.addEventListener('click', () => toggleCell(i - 1, j - 1));
+        cell.addEventListener('click', () => toggleCell(i - 1, j - 1, 1));
+        cell.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          toggleCell(i - 1, j - 1, 2);
+        });
       }
       row.appendChild(cell);
     }
@@ -51,19 +55,22 @@ function initializeGame() {
   solveButton.style.display = 'block';
 }
 
-function toggleCell(row, col) {
-  console.log(puzzle[row][col])
-  console.log("Toggle square " + row + ", " + col)
-  puzzle[row][col] = 1 - puzzle[row][col];
+function toggleCell(row, col, state) {
+  puzzle[row][col] = puzzle[row][col] == 0 ? state : 0;
   updateGrid();
-  console.log(puzzle[row][col])
 }
 
 function updateGrid() {
   for (let i = 0; i < puzzle.length; i++) {
     for (let j = 0; j < puzzle[i].length; j++) {
       const cell = nonogramTable.rows[i + 1].cells[j + 1];
-      cell.style.backgroundColor = puzzle[i][j] ? 'black' : 'white';
+      if (puzzle[i][j] === 0) {
+        cell.style.backgroundColor = 'white';
+      } else if (puzzle[i][j] === 1) {
+        cell.style.backgroundColor = 'black';
+      } else {
+        cell.style.backgroundColor = 'gray';
+      }
     }
   }
 }

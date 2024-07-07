@@ -62,3 +62,13 @@ numbers: 1x10 list of lists of segments(number, completed). Lists columns, then 
   [Segment(3, False), Segment(1, False)],
   [Segment(3, False)],
 ]
+
+Python TODOs
+- Create Rows data structure? I forget why I might need it, maybe to process a row at a time or mark completed
+  - Row would be a list of Segments, and a bool for completed or not
+
+HTML/JS TODOs
+- Turn gray "confirmed no fill" squares into Red X's
+- Create data structures
+- Maybe add line CSS for every 5 lines in grid
+- Do solver algo
